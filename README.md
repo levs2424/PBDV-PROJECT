@@ -35,7 +35,7 @@ The **Peer Tutoring Platform** is a web-based application designed to facilitate
    git clone git@github.com:levs2424/PBDV-PROJECT.git
    cd PBDV-PROJECT
    ```
-   <!--
+<!--
 2. Set up a virtual environment and install dependencies:
    ```sh
    python -m venv venv
@@ -46,9 +46,7 @@ The **Peer Tutoring Platform** is a web-based application designed to facilitate
    ```sh
    flask run
    ```
-4. Access the platform at `http://127.0.0.1:5000/`.
-
-   -->
+4. Access the platform at `http://127.0.0.1:5000/`.-->
 
 ## Project Timeline
 | Phase | Duration | Tasks |
