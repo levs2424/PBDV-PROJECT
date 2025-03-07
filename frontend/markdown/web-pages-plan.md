@@ -1,6 +1,6 @@
 ### **Structure Overview**
 
-For hand written plan [click here](../assets/designs/handwritten_webpage_plan.jpeg)
+For hand written plan [click here](../assets/designs/handwritten_webpage_plan.jpeg).
 For figma designs [click here](https://www.figma.com/design/o1fHm2C3Z9kFr4xnLumk7Q/Peer-Tutoring?node-id=0-1&p=f&t=L7dMdeyrvWNsW3Tm-0)
 
 ---
