@@ -1,0 +1,60 @@
+<!-- templates/book_session.html -->
+{% extends 'base.html' %}
+
+{% block title %}Book a Session - {{ module.module_name }}{% endblock %}
+
+{% block content %}
+    <h1>Book a Session for {{ module.module_name }} ({{ module.module_code }})</h1>
+
+    <!-- Dropdown to select a tutor -->
+    <form method="GET" action="{{ url_for('book_session', module_id=module.module_id) }}">
+        <label for="tutor_id">Select a Tutor:</label>
+        <select name="tutor_id" onchange="this.form.submit()">
+            <option value="">-- Select a Tutor --</option>
+            {% for tutor in tutors %}
+                <option value="{{ tutor.user_id }}" {% if selected_tutor_id == tutor.user_id %}selected{% endif %}>
+                    {{ tutor.username }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <!-- Display available slots -->
+    {% if selected_tutor_id and availability_slots %}
+        <h2>Available Slots</h2>
+        <form method="POST" action="{{ url_for('book_session', module_id=module.module_id) }}">
+            <input type="hidden" name="tutor_id" value="{{ selected_tutor_id }}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day of Week</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for slot in availability_slots %}
+                        <tr>
+                            <td>{{ slot.day_of_week }}</td>
+                            <td>{{ slot.start_time }}</td>
+                            <td>{{ slot.end_time }}</td>
+                            <td>
+                                <input type="radio" name="availability_id" value="{{ slot.availability_id }}" required>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <label for="booking_date">Booking Date (YYYY-MM-DD):</label>
+            <input type="date" id="booking_date" name="booking_date" required>
+            <br><br>
+            <input type="submit" value="Book">
+        </form>
+    {% elif selected_tutor_id %}
+        <p>No availability slots found for this tutor.</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('student_dashboard') }}">Back to Dashboard</a>
+{% endblock %}
