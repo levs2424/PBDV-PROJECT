@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>My Booked Classes</h1>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                <strong>Module:</strong> {{ booking.module.module_name }} ({{ booking.module.module_code }})<br>
+                <strong>Tutor:</strong> {{ booking.tutor.username }}<br>
+                <strong>Date:</strong> {{ booking.booking_date }}<br>
+                <strong>Time:</strong> {{ booking.availability.start_time }} to {{ booking.availability.end_time }}<br>
+            </li>
+        {% else %}
+            <li>No bookings found.</li>
+        {% endfor %}
+    </ul>
+
+    
+    <a href="{{ url_for('student_dashboard') }}">
+        <button style="background-color: green; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+            Back to Dashboard
+        </button>
+    </a>
+</body>
+</html>
