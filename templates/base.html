@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scss/main.css') }}">
+    <title>Peer Tutoring</title>
+</head>
+<body>
+    <header>
+        <strong>Peer Tutoring</strong>
+
+        <nav class="nav-menu">
+            <a href="{{ url_for('home') }}" class="active">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <div class="dropdown">
+                <a href="#">For Students</a>
+                <div class="dropdown-content">
+                    <a href="#">Find a Tutor</a>
+                    <a href="#">Book a Session</a>
+                    <a href="#">My Sessions</a>
+                    <a href="#">Study Resources</a>
+                    <a href="#">Student Dashboard</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">For Tutors</a>
+                <div class="dropdown-content">
+                    <a href="#">Become a Tutor</a>
+                    <a href="#">Tutor Dashboard</a>
+                    <a href="#">Teaching Resources</a>
+                    <a href="#">Session Management</a>
+                    <a href="#">Earnings</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Subjects</a>
+                <div class="dropdown-content">
+                    <a href="#">Mathematics</a>
+                    <a href="#">Sciences</a>
+                    <a href="#">Humanities</a>
+                    <a href="#">Languages</a>
+                    <a href="#">Computer Science</a>
+                    <a href="#">Browse All Subjects</a>
+                </div>
+            </div>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+
+        <section class="auth">
+            <button><a href="{{ url_for('login') }}">Login</a></button>
+        </section>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <section>
+            <article class="summary">
+                <div class="footer-logo">
+                    <div class="footer-logo-text">Peer Tutoring</div>
+                </div>
+                <p>Connecting students with qualified peer tutors to foster academic excellence and collaborative learning.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><span>f</span></a>
+                    <a href="#" aria-label="Twitter"><span>t</span></a>
+                    <a href="#" aria-label="Instagram"><span>i</span></a>
+                    <a href="#" aria-label="LinkedIn"><span>in</span></a>
+                </div>
+            </article>
+
+            <article class="details">
+                <div class="footer-section">
+                    <h3>For Students</h3>
+                    <ul>
+                        <li><a href="#">Find a Tutor</a></li>
+                        <li><a href="#">Book a Session</a></li>
+                        <li><a href="#">My Sessions</a></li>
+                        <li><a href="#">Submit Feedback</a></li>
+                        <li><a href="#">Study Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>For Tutors</h3>
+                    <ul>
+                        <li><a href="#">My Dashboard</a></li>
+                        <li><a href="#">Manage Schedule</a></li>
+                        <li><a href="#">Session Requests</a></li>
+                        <li><a href="#">Teaching Resources</a></li>
+                        <li><a href="#">Tutor Community</a></li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="contact">
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Report an Issue</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <hr>
+
+        <p>&copy; 2025 Peer Tutoring. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Accessibility</a></p>
+    </footer>
+</body>
+</html>

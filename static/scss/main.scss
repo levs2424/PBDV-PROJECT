@@ -1,0 +1,655 @@
+$pr-color: #EFDCF9;
+$sd-color: #C55FFC;
+$font-pr-color: #323E42;
+$font-sd-color: #FFFFFF;
+$smoke: whitesmoke;
+
+$poppins: "Poppins", sans-serif, Arial, sans-serif;
+$bold: 700;
+$semibold: 500;
+$regular: 400;
+
+$hd-1-size: 4em;
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &:focus {
+        color: $sd-color;
+    }
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-size: $hd-1-size;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-bottom: 2rem;
+}
+
+h4 {
+    margin-bottom: 1.25rem;
+}
+
+button {
+    background-color: $sd-color;
+    border: none;
+    cursor: pointer;
+    min-width: 4rem;
+    min-height: 2rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    color: $font-sd-color;
+    font-family: $poppins;
+    font-weight: $bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        background-color: darken($sd-color, 10%);
+    }
+
+    &:active {
+        transform: scale(0.98); 
+    }
+
+    &:focus {
+        outline: 2px solid lighten($sd-color, 20%);
+    }
+
+    a {
+        color: inherit;
+        padding: 0;
+
+        &:hover {
+            color: $smoke;
+        }
+    }
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.card {
+    background-color: $font-sd-color;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    width: 30%;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    button {
+        margin-top: .75rem;
+    }
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $poppins;
+    color: $font-pr-color;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    padding: 1rem 2rem;
+    width: 100%;
+    background-color: $font-sd-color;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    top: 0;
+    z-index: 1000;
+
+    strong {
+        font-size: 1.5rem;
+        font-weight: $bold;
+        color: $font-pr-color;
+    }
+
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .dropdown {
+        position: relative;
+
+        &:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: $pr-color;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            min-width: 200px;
+            z-index: 1000;
+        }
+    }
+}
+
+main {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-image: url('../images/creative\ design\ hero\ header.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 2rem;
+
+        .hero-title {
+            padding: 2rem;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: start;
+        max-width: 100%;
+        padding: 8rem 12rem;
+        gap: 8rem;
+
+        .description {
+            button {
+                margin-top: 2rem;
+            }
+        }
+    }
+    
+    .descr-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+}
+
+.about-page {
+    padding: 8rem 12rem;
+    background-color: $pr-color;
+    color: $font-pr-color;
+
+    ul {
+        margin-bottom: 2rem;
+
+        li {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+            color: $font-pr-color;
+
+            &::before {
+                content: "•";
+                color: $sd-color;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .features-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-block: 4rem;
+
+        
+    }
+
+    .mission-section,
+    .why-choose-section {
+        margin-bottom: 4rem;
+
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+    }
+
+    .join-section {
+        text-align: center;
+    }
+}
+
+.contact-page {
+    padding: 8rem 12rem;
+    background-color: $pr-color;
+    background-image: url('../images/creative\ design\ hero\ header.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    h1 {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 2.5em;
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .contact-info {
+        margin-top: 2rem;
+        text-align: center;
+
+        h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+
+            .info-card {
+                
+
+                h3 {
+                    font-size: 1.5em;
+                    margin-bottom: 1rem;
+                    color: $sd-color;
+                }
+
+                p {
+                    font-size: 1.1em;
+                    color: $font-pr-color;
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 4rem 2rem;
+    background-color: $pr-color;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        padding: 4rem 8rem;
+
+        img {
+            height: 100%;
+            width: 50%;
+            border-radius: .5rem 0 0 .5rem;
+            box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
+        }
+    
+        article {
+            min-height: 90vh;
+            width: 50%;
+            padding: 2rem 4rem;
+            background-color: $font-sd-color;
+            border-radius: 0 .5rem .5rem 0;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+
+            h2 {
+                margin-bottom: .5rem;
+            }
+
+            form {
+
+                .form-group {
+                    input,
+                    select {
+                        width: 100%;
+                        padding: 0.75rem;
+                        border: 1px solid lighten($font-pr-color, 50%);
+                        border-radius: 0.5rem;
+                        color: $font-pr-color;
+                        transition: border-color 0.3s ease;
+
+                        &:focus {
+                            border-color: $sd-color;
+                            outline: none;
+                        }
+                    }
+
+                    select {
+                        appearance: none;
+                        background-color: $font-sd-color;
+                    }
+                }
+
+                button {
+                    padding: 0;
+                    margin-block: 2rem;
+
+                    input {
+                        background-color: $sd-color;
+                        border: none;
+                        cursor: pointer;
+                        min-width: 4rem;
+                        min-height: 2rem;
+                        padding: 0.5rem 1.5rem;
+                        border-radius: 0.5rem;
+                        color: $font-sd-color;
+                        font-family: $poppins;
+                        font-weight: $bold;
+                        transition: background-color 0.3s ease, transform 0.2s ease;
+
+                        &:hover {
+                            background-color: darken($sd-color, 10%);
+                        }
+
+                        &:active {
+                            transform: scale(0.98); 
+                        }
+
+                        &:focus {
+                            outline: 2px solid lighten($sd-color, 20%);
+                        }
+
+                        a {
+                            color: inherit;
+                            padding: 0;
+
+                            &:hover {
+                                color: $smoke;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    p {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: $font-pr-color;
+
+        a {
+            color: $sd-color;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: darken($sd-color, 10%);
+            }
+        }
+    }
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 4rem 2rem;
+    background-color: $pr-color;
+    
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        padding: 4rem 8rem;
+
+        img {
+            height: 100%;
+            width: 50%;
+            border-radius: 0 .5rem .5rem 0;
+            box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
+        }
+    
+        article {
+            min-height: 90vh;
+            width: 50%;
+            padding: 2rem 4rem;
+            background-color: $font-sd-color;
+            border-radius: .5rem 0 0 .5rem;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+
+            h2 {
+                margin-bottom: .5rem;
+            }
+
+            form {
+
+                .form-group {
+                    input,
+                    select {
+                        width: 100%;
+                        padding: 0.75rem;
+                        border: 1px solid lighten($font-pr-color, 50%);
+                        border-radius: 0.5rem;
+                        color: $font-pr-color;
+                        transition: border-color 0.3s ease;
+
+                        &:focus {
+                            border-color: $sd-color;
+                            outline: none;
+                        }
+                    }
+
+                    select {
+                        appearance: none;
+                        background-color: $font-sd-color;
+                    }
+                }
+
+                button {
+                    padding: 0;
+                    margin-block: 2rem;
+
+                    input {
+                        background-color: $sd-color;
+                        border: none;
+                        cursor: pointer;
+                        min-width: 4rem;
+                        min-height: 2rem;
+                        padding: 0.5rem 1.5rem;
+                        border-radius: 0.5rem;
+                        color: $font-sd-color;
+                        font-family: $poppins;
+                        font-weight: $bold;
+                        transition: background-color 0.3s ease, transform 0.2s ease;
+
+                        &:hover {
+                            background-color: darken($sd-color, 10%);
+                        }
+
+                        &:active {
+                            transform: scale(0.98); 
+                        }
+
+                        &:focus {
+                            outline: 2px solid lighten($sd-color, 20%);
+                        }
+
+                        a {
+                            color: inherit;
+                            padding: 0;
+
+                            &:hover {
+                                color: $smoke;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    p {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: $font-pr-color;
+
+        a {
+            color: $sd-color;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: darken($sd-color, 10%);
+            }
+        }
+    }
+}
+
+footer {
+    background-color: $smoke;
+    padding: 2rem 4rem;
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 0 1rem;
+
+        .summary {
+            flex: 1 1 300px;
+            padding-inline: 4rem;
+
+            .social-icons {
+                display: flex;
+                margin-top: 2rem;
+                gap: 1rem;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    background-color: $sd-color;
+                    color: $font-sd-color;
+                    border-radius: 50%;
+                    text-decoration: none;
+                    transition: background-color 0.3s ease, transform 0.2s ease;
+
+                    span {
+                        font-size: 1rem;
+                        font-weight: $bold;
+                    }
+
+                    &:hover {
+                        background-color: darken($sd-color, 10%);
+                        transform: translateY(-2px);
+                    }
+                }
+            }
+        }
+
+        .details {
+            margin-left: 8rem;
+        }
+
+        .details,
+        .contact {
+            flex: 1 1 200px;
+            display: flex;
+            gap: 2rem;
+
+            .footer-section {
+                h3 {
+                    font-size: 1.1rem;
+                    font-weight: $bold;
+                    margin-bottom: 1rem;
+                    color: $font-pr-color;
+                }
+
+                ul {
+                    li {
+                        margin-bottom: 0.75rem;
+
+                        a {
+                            color: lighten($font-pr-color, 10%);
+                            transition: color 0.3s ease;
+
+                            &:hover {
+                                color: $sd-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-color: $sd-color;
+        margin: 2rem auto;
+        max-width: 1200px;
+    }
+
+    p {
+        text-align: center;
+        font-size: 0.8rem;
+        margin: 0;
+
+        a {
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $sd-color;
+            }
+        }
+    }
+}
+

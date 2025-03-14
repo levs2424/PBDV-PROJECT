@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <article class="hero-title">
+        <h1>Welcome to Peer Tutor</h1>
+
+        <p>
+            Connect with expert peer tutors, schedule sessions effortlessly, and achieve your academic goals with confidence.
+
+            <br>
+
+            Where knowledge meets collaboration—start your journey today!
+        </p>
+    </article>
+    
+    <article class="cards">
+        <div class="card">
+            <h4>Find a Tutor</h4>
+            <p>Connect with qualified peer tutors who can help you achieve your academic goals.</p>
+            <button><a href="#">Find Tutors</a></button>
+        </div>
+
+        <div class="card">
+            <h4>Become a Tutor</h4>
+            <p>Share your knowledge, help fellow students, and earn while building your resume.</p>
+            <button><a href="#">Become a Tutor</a></button>
+        </div>
+    </article>
+</section>
+
+<section class="about">
+    <article class="description">
+        <h2>About Peer Tutoring</h2>
+        <p>
+            Peer Tutoring is a platform that connects students with peer tutors for personalized learning experiences.
+            Our mission is to make education more accessible and personalized through peer-to-peer learning.
+        </p>
+        <button><a href="{{ url_for('about') }}">About</a></button>
+    </article>
+    <article class="description descr-2">
+        <p style="text-align: center;">Connecting students with qualified peer tutors to foster academic excellence and collaborative learning.</p>
+        <img src="../static/images/about.jpeg" alt="DUT" class="about-image">
+        <p>
+            Empowering students through personalized peer-to-peer learning.
+            Schedule sessions, track progress, and connect with tutors who make learning simpler, smarter, and more effective.
+        </p>
+    </article>
+</section>
+{% endblock %}

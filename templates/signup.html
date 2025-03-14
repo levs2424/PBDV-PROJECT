@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Signup Section -->
+<section class="signup" >
+    <div class="container">
+        <img src="../static/images/_.jpeg" alt="Signup banner">
+        <article class="form">
+            <h2>Create an Account</h2>
+            <p style="text-align: start; font-size: .75em;">Join Peer Tutoring today and unlock a world of personalized learning! Whether you're a student looking for academic support or a tutor ready to share your knowledge, our platform makes it easy to connect, learn, and grow.</p>
+
+            <form method="POST" action="{{ url_for('signup') }}">
+                {{ form.hidden_tag() }}
+            
+                <div class="form-group">
+                    <p>
+                        {{ form.first_name(size=32, placeholder="First Name", class="form-control") }}
+                        {% if form.first_name.errors %}
+                            <div class="text-danger">
+                                {% for error in form.first_name.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </p>
+                </div>
+            
+                <div class="form-group">
+                    <p>
+                        {{ form.last_name(size=32, placeholder="Last Name", class="form-control") }}
+                        {% if form.last_name.errors %}
+                            <div class="text-danger">
+                                {% for error in form.last_name.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </p>
+                </div>
+            
+                <div class="form-group">
+                    <p>
+                        {{ form.email(size=32, placeholder="Email", class="form-control") }}
+                        {% if form.email.errors %}
+                            <div class="text-danger">
+                                {% for error in form.email.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </p>
+                </div>
+            
+                <div class="form-group">
+                    <p>
+                        {{ form.password(size=32, placeholder="Password", class="form-control") }}
+                        {% if form.password.errors %}
+                            <div class="text-danger">
+                                {% for error in form.password.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </p>
+                </div>
+            
+                <div class="form-group">
+                    <p>
+                        {{ form.confirm_password(size=32, placeholder="Confirm Password", class="form-control") }}
+                        {% if form.confirm_password.errors %}
+                            <div class="text-danger">
+                                {% for error in form.confirm_password.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </p>
+                </div>
+            
+                <div class="form-group">
+                    <p>
+                        {{ form.role(class="form-control") }}
+                        {% if form.role.errors %}
+                            <div class="text-danger">
+                                {% for error in form.role.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </p>
+                </div>
+            
+                <button class="btn btn-primary">{{ form.submit() }}</button>
+            </form>   
+
+            <hr>
+
+            <p>Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+        </article>
+    </div>
+</section>
+
+
+{% endblock %}
