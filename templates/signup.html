@@ -1,0 +1,25 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+    <h1>Sign Up</h1>
+    <form method="POST" action="{{ url_for('signup') }}">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="surname">Surname:</label><br>
+        <input type="text" id="surname" name="surname" required><br><br>
+
+        <input type="submit" value="Sign Up">
+    </form>
+    <br>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Log in here</a>.</p>
+{% endblock %}
