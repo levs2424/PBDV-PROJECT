@@ -1,0 +1,16 @@
+<!-- templates/edit_booking.html -->
+{% extends 'base.html' %}
+
+{% block title %}Edit Booking{% endblock %}
+
+{% block content %}
+    <h1>Edit Booking</h1>
+    <form method="POST">
+        <label for="booking_date">Booking Date (YYYY-MM-DD):</label>
+        <input type="date" id="booking_date" name="booking_date" value="{{ booking.booking_date }}" required><br><br>
+
+        <input type="submit" value="Save Changes">
+    </form>
+    <br>
+    <a href="{{ url_for('view_tutor_bookings') }}">Back to Bookings</a>
+{% endblock %}

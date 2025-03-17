@@ -1,0 +1,26 @@
+<!-- templates/student_dash.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+</head>
+<body>
+    <h1>Student Dashboard</h1>
+    <h2>Available Modules</h2>
+    <p><a href="{{ url_for('search_modules') }}">Search Modules</a></p>
+    <ul>
+        {% for module in modules %}
+            <li>
+                {{ module.module_name }} ({{ module.module_code }}) - 
+                <a href="{{ url_for('book_session', module_id=module.module_id) }}">Book a Tutor</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>Debug: Button should appear below this line.</p>
+    <a href="{{ url_for('view_bookings') }}" style="background-color: blue; color: white; padding: 10px 20px; text-decoration: none; display: inline-block;">
+        View My Bookings
+    </a>
+</body>
+</html>

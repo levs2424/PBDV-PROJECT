@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Modules</title>
+</head>
+<body>
+    <h1>Search Modules</h1>
+    <form method="POST">
+        <input type="text" name="search_term" value="{{ search_term }}" placeholder="Enter module code or name">
+        <button type="submit">Search</button>
+    </form>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    {% if modules %}
+        <h2>Results:</h2>
+        <ul>
+        {% for module in modules %}
+            <li>
+                {{ module.module_code }} - {{ module.module_name }} ({{ module.description }})
+                <br>
+                Available Tutors:
+                <ul>
+                {% for tutor in module_tutors[module.module_id] %}
+                    <li>
+                        {{ tutor.name }} {{ tutor.surname }}
+                        <a href="{{ url_for('book_session', module_id=module.module_id, tutor_id=tutor.user_id) }}">Book</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No modules found.</p>
+    {% endif %}
+    <a href="{{ url_for('student_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

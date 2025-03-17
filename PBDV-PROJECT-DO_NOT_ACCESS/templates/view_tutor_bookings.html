@@ -1,0 +1,39 @@
+<!-- templates/view_tutor_bookings.html -->
+{% extends 'base.html' %}
+
+{% block title %}Your Bookings{% endblock %}
+
+{% block content %}
+    <h1>Your Bookings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Module</th>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.student.name }} {{ booking.student.surname }}</td>
+                    <td>{{ booking.module.module_name }}</td>
+                    <td>{{ booking.booking_date }}</td>
+                    <td>{{ booking.availability.day_of_week }}</td>
+                    <td>{{ booking.availability.start_time }}</td>
+                    <td>{{ booking.availability.end_time }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_booking', booking_id=booking.booking_id) }}">Edit</a>
+                        <a href="{{ url_for('remove_booking', booking_id=booking.booking_id) }}">Remove</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('tutor_dashboard') }}">Back to Dashboard</a>
+{% endblock %}
