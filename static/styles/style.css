@@ -16,6 +16,10 @@ body {
   color: #08233E;
 }
 
+button {
+  border: none;
+}
+
 a {
   color: #08233E;
   text-decoration: none;
@@ -38,6 +42,7 @@ h2,
 h3 {
   font-weight: 600;
   color: #08233E;
+  margin-bottom: 1rem;
 }
 
 h1 {
@@ -218,4 +223,133 @@ footer .copyright {
   100% {
     transform: scale(1) rotate(360deg);
   }
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+.cards .card {
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 30%;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cards .card a {
+  margin-top: 1rem;
+}
+.cards .card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+main .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+main .hero .hero-title {
+  padding: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+main .about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  padding: 8rem 12rem;
+}
+main .about .description {
+  max-width: 60%;
+}
+main .about .description p {
+  margin-bottom: 1rem;
+}
+main .about .description a {
+  margin-top: 1rem;
+}
+main .about img {
+  max-width: 25%;
+}
+main .signup,
+main .login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+main .signup .form,
+main .login .form {
+  width: 50%;
+}
+main .signup .form,
+main .login .form {
+  padding: 6rem 8rem;
+}
+main .signup .form form,
+main .login .form form {
+  margin-top: 1rem;
+}
+main .signup .form form .form-group,
+main .login .form form .form-group {
+  margin-bottom: 1rem;
+}
+main .signup .form form .form-group input,
+main .login .form form .form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #EEEDE7;
+  border-radius: 0.5rem;
+  font-size: 0.95em;
+  color: #08233E;
+  transition: border-color 0.3s ease;
+}
+main .signup .form form .form-group input:focus,
+main .login .form form .form-group input:focus {
+  border-color: #766EE4;
+  outline: none;
+}
+main .signup .form form .btn,
+main .login .form form .btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.95em;
+  background-color: #766EE4;
+  color: #FFFFFF;
+}
+main .signup .form form .btn:hover,
+main .login .form form .btn:hover {
+  background-color: #A1ABF9;
+}
+main .signup .form hr,
+main .login .form hr {
+  border: none;
+  border-top: 1px solid #EEEDE7;
+  margin: 1.5rem 0;
+}
+main .signup .form p,
+main .login .form p {
+  font-size: 0.75em;
+}
+main .signup .form p a,
+main .login .form p a {
+  color: #766EE4;
+  font-weight: 600;
+}
+main .signup .form p a:hover,
+main .login .form p a:hover {
+  color: #A1ABF9;
+}
+main .signup .form .aside,
+main .login .form .aside {
+  text-align: center;
 }
