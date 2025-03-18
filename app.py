@@ -89,7 +89,7 @@ def list_users():
 # Homepage
 @app.route('/')
 def index():
-    return redirect(url_for('login'))
+    return render_template('index.html')
 
 # Login
 @app.route('/login', methods=['GET', 'POST'])
