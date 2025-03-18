@@ -1,0 +1,43 @@
+<!-- templates/tutor_dash.html -->
+{% extends 'base.html' %}
+
+{% block title %}Tutor Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Welcome, {{ session.username }} (Tutor)</h1>
+
+    <h2>Your Modules</h2>
+    <ul>
+        {% for module in modules %}
+            <li>{{ module.module_name }} ({{ module.module_code }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Your Availability</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Module</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for slot in availability %}
+                <tr>
+                    <td>{{ slot.day_of_week }}</td>
+                    <td>{{ slot.start_time.strftime('%H:%M') }}</td>
+                    <td>{{ slot.end_time.strftime('%H:%M') }}</td>
+                    <td>{{ slot.module.module_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Your Bookings</h2>
+    <a href="{{ url_for('view_tutor_bookings') }}">View Bookings</a>
+
+    <br><br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!-- templates/view_bookings.html -->
+{% extends 'base.html' %}
+
+{% block title %}My Bookings{% endblock %}
+
+{% block content %}
+    <h1>My Bookings</h1>
+    {% if bookings %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Tutor</th>
+                    <th>Date</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.module.module_name }} ({{ booking.module.module_code }})</td>
+                        <td>{{ booking.tutor.name }} {{ booking.tutor.surname }}</td>
+                        <td>{{ booking.booking_date }}</td>
+                        <td>{{ booking.availability.day_of_week }}</td>
+                        <td>{{ booking.availability.start_time }}</td>
+                        <td>{{ booking.availability.end_time }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no bookings yet. <a href="{{ url_for('student_dashboard') }}">Book a session now!</a></p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('student_dashboard') }}">Back to Dashboard</a>
+{% endblock %}

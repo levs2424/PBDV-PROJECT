@@ -1,0 +1,52 @@
+<!-- templates/edit_tutor.html -->
+{% extends 'base.html' %}
+
+{% block title %}Edit Tutor{% endblock %}
+
+{% block content %}
+    <h1>Edit Tutor: {{ tutor.name }} {{ tutor.surname }}</h1>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ tutor.name }}" required><br><br>
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" value="{{ tutor.surname }}" required><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ tutor.username }}" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="{{ tutor.password }}" required><br><br>
+
+        <h2>Assign Modules</h2>
+        {% for module in modules %}
+            <input type="checkbox" id="module_{{ module.module_id }}" name="module_ids" value="{{ module.module_id }}"
+                   {% if module in tutor.modules %}checked{% endif %}>
+            <label for="module_{{ module.module_id }}">{{ module.module_name }} ({{ module.module_code }})</label><br>
+        {% endfor %}
+
+        <h2>Availability</h2>
+        {% for slot in availability %}
+            <div>
+                <label>Day:</label>
+                <input type="text" name="day_of_week_{{ slot.availability_id }}" value="{{ slot.day_of_week }}" required>
+                <label>Start Time:</label>
+                <input type="time" name="start_time_{{ slot.availability_id }}" value="{{ slot.start_time }}" required>
+                <label>End Time:</label>
+                <input type="time" name="end_time_{{ slot.availability_id }}" value="{{ slot.end_time }}" required>
+                <label>Module:</label>
+                <select name="module_id_{{ slot.availability_id }}">
+                    {% for module in modules %}
+                        <option value="{{ module.module_id }}" {% if module.module_id == slot.module_id %}selected{% endif %}>
+                            {{ module.module_name }} ({{ module.module_code }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endfor %}
+
+        <input type="submit" value="Save Changes">
+    </form>
+    <br>
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+{% endblock %}

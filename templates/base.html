@@ -1,0 +1,111 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../static/images/tute.png" type="image/x-icon">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+<body>
+    <div id="loader" class="loader">
+        <div class="circle-container">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+    </div>
+    <header>
+        {% if session.get('user_id') %}
+
+        {% else %}
+            <nav class="guest-nav">
+                <a href="{{ url_for('index') }}" class="logo"><img src="../static/images/tute.png" alt="Tute Me" width="30"></a>
+            
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Tutor</a></li>
+                    <li><a href="#">Student</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+
+                <a href="{{ url_for('login') }}" class="btn">
+                    <span>Login</span>
+                    <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </nav>
+        {%  endif %}
+    </header>
+
+    <main>
+        <section class="flash-messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <section class="contact">
+            <article class="header">
+                <div>
+                    <a href="{{ url_for('index') }}" class="logo"><img src="../static/images/tute.png" alt="Tute Me" width="30"></a>
+                    <h3>Tute Me</h3>
+                </div>
+                <p>Connecting students with qualified peer tutors to foster academic excellence and collaborative learning.</p>
+            </article>
+            <article class="links">
+                <a href="#" aria-label="Facebook" class="btn"><span>f</span></a>
+                <a href="#" aria-label="Twitter" class="btn"><span>t</span></a>
+                <a href="#" aria-label="Instagram" class="btn"><span>i</span></a>
+                <a href="#" aria-label="LinkedIn" class="btn"><span>in</span></a>
+            </article>
+        </section>
+
+        <section class="about">
+            <h3>Learn. Connect. Succeed.</h3>
+            <p>
+                TuteMe is a peer tutoring platform that connects students with qualified tutors for one-on-one and group study sessions. 
+                
+                <br />
+                <br />
+                
+                It offers features like tutor discovery, session booking, educational resources, and progress tracking to enhance learning. 
+                
+                <br />
+                <br />
+                
+                The platform streamlines tutoring with secure payments, in-app messaging, and personalized learning plans.
+            </p>
+        </section>
+
+        <hr>
+
+        <p class="copyright">&copy; 2025 Peer Tutoring. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Accessibility</a></p>
+    </footer>
+
+    <script>
+        function showLoader() {
+          document.getElementById('loader').style.display = 'flex';
+        }
+  
+        function hideLoader() {
+          document.getElementById('loader').style.display = 'none';
+        }
+  
+        showLoader();
+        setTimeout(hideLoader, 3000); 
+    </script>
+</body>
+</html>
