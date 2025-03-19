@@ -278,6 +278,18 @@ main .about .description a {
 main .about img {
   max-width: 25%;
 }
+main .contact {
+  display: flex;
+  justify-content: space-evenly;
+  margin-block: 6rem;
+}
+main .cta {
+  text-align: center;
+  margin: 8rem 6rem;
+}
+main .cta .btn {
+  margin-top: 2rem;
+}
 main .signup,
 main .login {
   display: flex;

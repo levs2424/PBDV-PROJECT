@@ -25,11 +25,9 @@
                 <a href="{{ url_for('index') }}" class="logo"><img src="../static/images/tute.png" alt="Tute Me" width="30"></a>
             
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Tutor</a></li>
-                    <li><a href="#">Student</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ url_for('index') }}?scrollTo=hero" class="scroll-link">Home</a></li>
+                    <li><a href="{{ url_for('index') }}?scrollTo=about" class="scroll-link">About</a></li>
+                    <li><a href="{{ url_for('index') }}?scrollTo=contact" class="scroll-link">Contact</a></li>
                 </ul>
 
                 <a href="{{ url_for('login') }}" class="btn">
@@ -96,6 +94,7 @@
     </footer>
 
     <script>
+        // Loader
         function showLoader() {
           document.getElementById('loader').style.display = 'flex';
         }
@@ -106,6 +105,41 @@
   
         showLoader();
         setTimeout(hideLoader, 2000); 
+
+        // Scroller
+        document.addEventListener("DOMContentLoaded", function () {
+            const params = new URLSearchParams(window.location.search);
+            const scrollToSection = params.get("scrollTo");
+
+            if (scrollToSection) {
+                const targetElement = document.getElementById(scrollToSection);
+                if (targetElement) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 50,
+                            behavior: "smooth"
+                        });
+                    }, 100);
+                }
+            }
+
+            document.querySelectorAll('.scroll-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const sectionID = this.getAttribute('href').split("=")[1];
+                    const targetElement = document.getElementById(sectionID);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 50,
+                            behavior: "smooth"
+                        });
+                    } else {
+                        window.location.href = "{{ url_for('index') }}?scrollTo=" + sectionID;
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
