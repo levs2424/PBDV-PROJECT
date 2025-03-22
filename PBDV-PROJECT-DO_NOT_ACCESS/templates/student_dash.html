@@ -1,26 +1,44 @@
-<!-- templates/student_dash.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Student Dashboard</title>
-</head>
-<body>
-    <h1>Student Dashboard</h1>
-    <h2>Available Modules</h2>
-    <p><a href="{{ url_for('search_modules') }}">Search Modules</a></p>
-    <ul>
-        {% for module in modules %}
-            <li>
-                {{ module.module_name }} ({{ module.module_code }}) - 
-                <a href="{{ url_for('book_session', module_id=module.module_id) }}">Book a Tutor</a>
-            </li>
-        {% endfor %}
-    </ul>
+{% extends "base.html" %}
 
-    <p>Debug: Button should appear below this line.</p>
-    <a href="{{ url_for('view_bookings') }}" style="background-color: blue; color: white; padding: 10px 20px; text-decoration: none; display: inline-block;">
-        View My Bookings
-    </a>
-</body>
-</html>
+{% block title %}Tute Me{% endblock %}
+
+{% block content %}
+
+<section class="student-dashboard">
+    <article class="dashboard-title">
+        <h2>Your Dashboard - Where you can see the overview of modules we offer</h2>
+        <p>
+            Here are the modules we offer, you can book you tutor based on the module you want
+        </p>
+
+
+        <div class="cards">
+            <a href="{{ url_for('search_modules') }}" class="btn">
+                <span>Search for modules</span>
+                <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+            <a href="{{ url_for('view_bookings') }}" class="btn">
+                <span>Go to my bookings</span>
+                <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+    </article>
+    <article class="dashboard-content">
+
+        <ul>
+            {% for module in modules %}
+                <li>
+                    <p>{{ module.module_name }} ({{ module.module_code }})</p>
+                     
+                    <a href="{{ url_for('book_session', module_id=module.module_id) }}">Book a Tutor</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </article>
+</section>
+
+{% endblock %}

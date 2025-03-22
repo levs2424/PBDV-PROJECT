@@ -1,0 +1,229 @@
+// Colors
+$color-primary: #08233E;
+$color-secondary: #766EE4;
+$color-accent: #A1ABF9;
+$color-light: #EEEDE7;
+$color-background: #FFFFFF;
+$color-muted: #F5F5F5;
+$color-danger: #ff4d4d;
+$color-danger-hover: #d63434;
+
+// Typography
+$font-primary: "Poppins", sans-serif;
+$font-weight-normal: 500;
+$font-weight-bold: 600;
+$line-height: 1.6;
+
+// Font Sizes
+$font-size-h1: 3em;
+$font-size-h2: 1.75em;
+$font-size-h3: 1.25em;
+$font-size-p: 0.95em;
+$font-size-small: 0.75em;
+$font-size-btn: 0.9em;
+
+// Spacing
+$spacing-small: 0.25rem;
+$spacing-medium: 0.5rem;
+$spacing-large: 1rem;
+$spacing-xlarge: 2rem;
+$spacing-xxlarge: 4rem;
+
+// Border Radius
+$border-radius-small: 0.5rem;
+$border-radius-circle: 100%;
+
+// Box Shadows
+$box-shadow-light: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+$box-shadow-medium: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+
+// Button Styles
+$btn-padding: 0.75rem;
+$btn-padding-large: 1.25rem;
+$btn-bg: $color-secondary;
+$btn-bg-hover: $color-accent;
+$btn-text-color: $color-background;
+$btn-text-color-hover: $color-primary;
+
+// Header/Footer Padding
+$header-padding: 1rem 4rem;
+$footer-padding: 1rem 4rem;
+
+// Grid System
+$grid-gap: 2rem;
+
+// Buttons
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 1.25rem;
+    background-color: $color-light;
+    color: $color-primary;
+    font-weight: $font-weight-bold;
+    border-radius: $border-radius-small;
+    transition: color 0.2s, background-color 0.2s;
+
+    span {
+        width: 100%;
+    }
+
+    .arrow-icon {
+        width: 1rem;
+        height: 1rem;
+        margin-left: 0.5rem;
+    }
+
+    &:hover {
+        background-color: $color-accent;
+        color: $color-primary;
+    }
+}
+
+// Cards
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+
+    .card {
+        border-radius: $border-radius-small;
+        padding: 1.5rem;
+        width: 30%;
+        box-shadow: $box-shadow-light;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        
+        a {
+            margin-top: 1rem;
+        }
+
+        &:hover {
+            box-shadow: $box-shadow-medium;
+        }
+    }
+}
+
+// Forms
+form {
+    .form-group {
+        margin-bottom: 1rem;
+    
+        input,
+        option {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid $color-light;
+            border-radius: $border-radius-small;
+            font-size: 0.95em;
+            color: $color-primary;
+            transition: border-color 0.3s ease;
+    
+            &:focus {
+                border-color: $color-secondary;
+                outline: none;
+            }
+        }
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.75rem;
+        margin-top: 1rem;
+        font-size: 0.95em;
+    }
+
+    hr {
+        border: none;
+        margin: 1.5rem 0;
+    }
+
+    p {
+        font-size: 0.75em;
+    
+        a {
+            color: $color-secondary;
+            font-weight: $font-weight-bold;
+
+            &:hover {
+                color: $color-accent;
+            }
+        }
+    }
+
+    .aside {
+        text-align: center;
+    }
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loader .circle-container {
+    position: relative;
+    width: 3.75px;
+    height: 3.75px;
+}
+
+.loader .circle {
+    width: 1rem;
+    height: 1rem;
+    background-color: $color-primary;
+    border-radius: $border-radius-circle;
+    position: absolute;
+    animation: spinAndScale 1.5s infinite ease-in-out;
+}
+
+.loader .circle:nth-child(1) {
+    top: 0;
+    left: 0;
+    transform-origin: bottom right;
+}
+
+.loader .circle:nth-child(2) {
+    top: 0;
+    right: 0;
+    transform-origin: bottom left;
+}
+
+.loader .circle:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    transform-origin: top right;
+}
+
+.loader .circle:nth-child(4) {
+    bottom: 0;
+    right: 0;
+    transform-origin: top left;
+}
+
+@keyframes spinAndScale {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.3) rotate(90deg);
+    }
+    50% {
+        transform: scale(1) rotate(180deg);
+    }
+    75% {
+        transform: scale(0.8) rotate(270deg);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}

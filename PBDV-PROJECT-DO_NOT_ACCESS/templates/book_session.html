@@ -4,10 +4,10 @@
 {% block title %}Book a Session - {{ module.module_name }}{% endblock %}
 
 {% block content %}
-    <h1>Book a Session for {{ module.module_name }} ({{ module.module_code }})</h1>
 
+<section class="book-session">
     <form method="GET" action="{{ url_for('book_session', module_id=module.module_id) }}">
-        <label for="tutor_id">Select a Tutor:</label>
+        <p>Select a tutor from these available one</p>
         <select name="tutor_id" onchange="this.form.submit()">
             <option value="">-- Select a Tutor --</option>
             {% for tutor in tutors %}
@@ -53,6 +53,6 @@
     {% elif selected_tutor_id %}
         <p>No availability slots found for this tutor.</p>
     {% endif %}
-    <br>
-    <a href="{{ url_for('student_dashboard') }}">Back to Dashboard</a>
+</section>
+
 {% endblock %}

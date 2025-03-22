@@ -4,22 +4,35 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-    <h1>Sign Up</h1>
-    <form method="POST" action="{{ url_for('signup') }}">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
+<section class="signup">
+    <article class="form">
+        <h2>Create an Account</h2>
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+        <p>Join Peer Tutoring today and unlock a world of personalized learning! Whether you're a student looking for academic support or a tutor ready to share your knowledge, our platform makes it easy to connect, learn, and grow.</p>
+    
+        <form action="{{ url_for('signup') }}" method="post">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
 
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+            <div class="form-group">
+                <input type="text" id="surname" name="surname" placeholder="Surname" required>
+            </div>
 
-        <label for="surname">Surname:</label><br>
-        <input type="text" id="surname" name="surname" required><br><br>
+            <div class="form-group">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
 
-        <input type="submit" value="Sign Up">
-    </form>
-    <br>
-    <p>Already have an account? <a href="{{ url_for('login') }}">Log in here</a>.</p>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Create password" required>
+            </div>
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+
+        <hr>
+
+        <p class="aside">Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+    </article>
+</section>
 {% endblock %}

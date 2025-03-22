@@ -1,0 +1,538 @@
+@use 'index' as *;
+
+// ==========
+// Global
+// ==========
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: $color-background;
+    line-height: $line-height;
+    font-family: $font-primary;
+    font-weight: $font-weight-normal;
+    color: $color-primary;
+}
+
+button {
+    border: none;
+}
+
+a {
+    color: $color-primary;
+    text-decoration: none;
+
+
+    &:hover {
+        color: $color-secondary;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+p {
+  font-size: 0.95em;
+}
+
+// ==========
+// Base
+// ==========
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    padding: $header-padding;
+    background-color: $color-background;
+
+    nav,
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        gap: $grid-gap;
+    }
+}
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: $grid-gap;
+    padding: $footer-padding;
+    background-color: $color-muted;
+
+    .contact {
+        grid-area: 1 / 1 / 4 / 3;
+
+        .header {
+        margin-bottom: $spacing-xlarge;
+
+        div {
+            display: flex;
+            align-items: center;
+            gap: $spacing-large;
+            margin-bottom: $spacing-large;
+        }
+        }
+
+        .links {
+        .btn {
+            width: 3rem;
+            height: 3rem;
+            border-radius: $border-radius-circle;
+        }
+        }
+    }
+
+    .about {
+        grid-area: 1 / 3 / 4 / 6;
+
+        h3 {
+        margin-bottom: 1.5rem;
+        }
+
+        p {
+        padding: 0 $spacing-xxlarge;
+        }
+    }
+
+    hr {
+        grid-area: 4 / 1 / 5 / 6;
+        margin: $spacing-xlarge $spacing-xxlarge;
+        border: none;
+        border-top: 1px solid $color-primary;
+    }
+
+    .copyright {
+        grid-area: 5 / 1 / 6 / 6;
+        text-align: center;
+        font-size: $font-size-small;
+    }
+}
+
+main {
+    // padding: 8rem 0;
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        padding: $spacing-xlarge;
+    
+        .hero-title {
+            padding: $spacing-xlarge;
+            width: 100%;
+            margin-bottom: $spacing-xlarge;
+        }
+    }
+
+    .about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: $spacing-xxlarge;
+        padding: 8rem 12rem;
+
+        .description {
+            max-width: 60%;
+            
+            p {
+                margin-bottom: $spacing-large;
+            }
+
+            a {
+                margin-top: $spacing-large;
+            }
+        }
+
+        img {
+            max-width: 25%;
+        }
+    }
+
+    .contact,
+    #contact {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 3rem 12rem;
+    }
+
+    .cta {
+        text-align: center;
+        margin: 8rem 6rem;
+        
+        .btn {
+            margin-top: $spacing-xlarge;
+        }
+    }
+
+    .signup,
+    .login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: $spacing-xlarge;
+    }
+
+    .signup .form,
+    .login .form {
+        width: 50%;
+        padding: 6rem 8rem;
+    }
+
+    .signup .form form,
+    .login .form form {
+        margin-top: $spacing-medium;
+    }
+
+    .signup .form form .form-group,
+    .login .form form .form-group {
+        margin-bottom: $spacing-medium;
+    }
+
+    .signup .form form .form-group input,
+    .login .form form .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid $color-light;
+        border-radius: $border-radius-small;
+        font-size: $font-size-p;
+        color: $color-primary;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            border-color: $color-secondary;
+            outline: none;
+        }
+    }
+
+    .signup .form form .btn,
+    .login .form form .btn {
+        width: 100%;
+        padding: 0.75rem;
+        margin-top: $spacing-medium;
+        font-size: $font-size-p;
+        background-color: $color-secondary;
+        color: $color-background;
+
+        &:hover {
+            background-color: $color-accent;
+        }
+    }
+
+    .signup .form hr,
+    .login .form hr {
+        border: none;
+        border-top: 1px solid $color-light;
+        margin: 1.5rem 0;
+    }
+
+    .signup .form p,
+    .login .form p {
+        font-size: $font-size-small;
+
+        a {
+            color: $color-secondary;
+            font-weight: $font-weight-bold;
+
+            &:hover {
+                color: $color-accent;
+            }
+        }
+    }
+
+    .signup .form .aside,
+    .login .form .aside {
+        text-align: center;
+    }
+
+    .student-dashboard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        min-height: 100vh;
+        padding: $spacing-xlarge;
+    
+        .student-dashboard .dashboard-title {
+            padding: $spacing-xlarge;
+            margin-bottom: $spacing-xlarge;
+        }
+
+        .dashboard-title {
+            width: 40%;
+
+            .cards {
+                margin-block: 2rem;
+                justify-content: start;
+            }
+        }
+
+        .dashboard-content {
+            width: 40%;
+            padding: $spacing-xlarge;
+            border-left: 1px solid $color-primary;
+
+            ul {
+                padding: 0;
+
+                li {
+                    margin-bottom: $spacing-medium;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    a {
+                        color: $color-secondary;
+                        font-weight: $font-weight-bold;
+                
+                        &:hover {
+                            color: $color-accent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .bookings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 8rem 2rem;
+    }
+
+    .bookings table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: $spacing-large;
+    }
+
+    .bookings th,
+    .bookings td {
+        padding: $spacing-small;
+        border: 1px solid $color-light;
+    }
+
+    .book-session {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 8rem 2rem;
+
+    }
+
+    .book-session form {
+        width: 50%;
+    }
+
+    .book-session table {
+        width: 100%;
+        margin-top: $spacing-large;
+        border-collapse: collapse;
+    }
+
+    .book-session th,
+    .book-session td {
+        padding: $spacing-small;
+        border: 1px solid $color-light;
+    }
+
+    .search-module {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 8rem 2rem;
+    }
+
+    .search-module .search {
+        margin-bottom: $spacing-large;
+    }
+
+    .admin-dashboard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        padding: 8rem 0;
+    }
+
+    .admin-dashboard .hero-title {
+        padding: $spacing-xlarge;
+        width: 100%;
+        margin-bottom: $spacing-xlarge;
+    }
+
+    .admin-dashboard .cards {
+        display: flex;
+        gap: $spacing-large;
+        justify-content: center;
+    }
+
+    .admin-dashboard .card {
+        background: $color-light;
+        padding: $spacing-large;
+        border-radius: $border-radius-small;
+        box-shadow: $box-shadow-medium;
+        max-width: 400px;
+    }
+
+    .admin-dashboard .card h3 {
+        margin-bottom: $spacing-small;
+    }
+
+    #users {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: $spacing-xlarge;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: $spacing-large;
+    }
+
+    .section-header .sticker {
+        display: flex;
+        align-items: center;
+        gap: $spacing-small;
+    }
+
+    .users-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: $spacing-large;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: $spacing-small;
+        border: 1px solid $color-light;
+    }
+
+    .users-table .actions {
+        display: flex;
+        gap: $spacing-small;
+    }
+
+    .users-table .btn.small {
+        padding: 0.5rem;
+        font-size: $font-size-small;
+    }
+
+    .users-table .btn.edit {
+        background-color: $color-secondary;
+    }
+
+    .users-table .btn.delete {
+        background-color: $color-danger;
+    }
+
+    .view-tutor, .edit-tutor, .remove-tutor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: $spacing-xlarge;
+    }
+
+    .view-tutor .cards, .edit-tutor .flexx, .remove-tutor .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $spacing-large;
+    }
+
+    .view-tutor .card, .edit-tutor .form, .remove-tutor .card {
+        background: $color-light;
+        padding: $spacing-large;
+        border-radius: $border-radius-small;
+        box-shadow: $box-shadow-medium;
+        max-width: 500px;
+    }
+
+    .view-tutor table, .edit-tutor table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: $spacing-medium;
+    }
+
+    .view-tutor th, .view-tutor td, .edit-tutor th, .edit-tutor td {
+        padding: $spacing-small;
+        border: 1px solid $color-light;
+    }
+
+    .edit-tutor .form-group {
+        margin-bottom: $spacing-small;
+    }
+
+    .edit-tutor .modules input[type="checkbox"] {
+        margin-right: $spacing-medium;
+    }
+
+    .remove-tutor .btn {
+        background-color: $color-danger;
+        color: $color-light;
+        padding: $spacing-small $spacing-large;
+        border-radius: $border-radius-small;
+        display: flex;
+        align-items: center;
+        gap: $spacing-small;
+    }
+
+}

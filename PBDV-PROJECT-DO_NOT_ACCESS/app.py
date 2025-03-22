@@ -89,7 +89,12 @@ def list_users():
 # Homepage
 @app.route('/')
 def index():
-    return redirect(url_for('login'))
+    user = None
+
+    if 'user_id' in session:
+        user = User.query.get(session['user_id'])   
+    
+    return render_template('home.html', user=user)
 
 # Login
 @app.route('/login', methods=['GET', 'POST'])
@@ -514,4 +519,4 @@ def view_tutor_bookings():
 #ends here
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)

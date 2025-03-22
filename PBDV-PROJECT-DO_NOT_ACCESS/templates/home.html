@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+
+{% block title %}Tute Me{% endblock %}
+
+{% block content %}
+
+{% if user %}
+    {% if user.role == 'student' %}
+
+        <section class="hero student-hero" id="hero">
+            <article class="hero-title">
+                <h1>Hey {{ user.username }}! Hope you still remember me right? Tute Me!</h1>
+        
+                <p>
+                    Connect with expert tutors, schedule sessions effortlessly, and achieve your academic goals with confidence.
+        
+                    <br>
+        
+                    Where knowledge meets collaboration—start your journey today!
+                </p>
+            </article>
+            
+            <article class="cards">
+                <div class="card">
+                    <h3>Want your dashboard?</h3>
+                    <p>Where you can seamlessly get your overall overview</p>
+                    <a href="{{ url_for('student_dashboard') }}" class="btn">
+                        <span>Go to you dashboard</span>
+                        <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                    </a>
+                </div>
+        
+                <div class="card">
+                    <h3>Want your bookings?</h3>
+                    <p>Get you latest bookings and make sure you don't b late</p>
+                    <a href="{{ url_for('view_bookings') }}" class="btn">
+                        <span>Go to your bookings</span>
+                        <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </section>
+
+        <section class="about" id="about">
+            <article class="description">
+                <h2>Get to Know Tute Me: Your Gateway to Smarter Learning!</h2>
+    
+                <p>
+                    Peer Tutoring is a platform that connects students with peer tutors for personalized learning experiences.
+                    Our mission is to make education more accessible and personalized through peer-to-peer learning.
+                </p>
+    
+                <p>
+                    Empowering students through personalized peer-to-peer learning.
+                    Schedule sessions, track progress, and connect with tutors who make learning simpler, smarter, and more effective.
+                </p>
+    
+                <a href="{{ url_for('view_bookings') }}" class="btn">
+                    <span>Start making your bookings</span>
+                    <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </article>
+    
+            <img src="../static/images/student.png" alt="Tute Me">
+        </section>
+
+        <section class="cards" id="contact">
+            <article class="card">
+                <h3>Who’s Who?</h3>
+    
+                <p>
+                    Students find tutors and book sessions, tutors manage schedules and teach, while admins keep everything running smoothly.
+                </p>
+            </article>
+            <article class="card">
+                <h3>Seamless Scheduling</h3>
+    
+                <p>
+                    Students book sessions based on tutor availability, tutors accept or decline, and automated reminders prevent missed sessions.
+                </p>
+            </article>
+            <article class="card">
+                <h3>Top-Tier Tutors</h3>
+    
+                <p>
+                    Tutors are verified for expertise, students leave reviews for transparency, and admins ensure high-quality learning.
+                </p>
+            </article>
+        </section>
+    
+        <section class="contact">
+            <article class="tuteme">
+                <h3>Company Information</h3>
+                <p><strong>TuteMe</strong></p>
+                <p>123 Learning Avenue, Durban, 4000, South Africa</p>
+                <p>Phone: +27 21 123 4567</p>
+                <p>Email: <a href="mailto:support@tuteme.co.za">support@tuteme.co.za</a></p>
+                <p>Website: <a href="https://www.tuteme.co.za" target="_blank">www.tuteme.co.za</a></p>
+            </article>
+    
+            <article class="support">
+                <h3>Support Hours</h3>
+                <p><strong>Monday - Friday:</strong> 08:00 AM - 06:00 PM (SAST)</p>
+                <p><strong>Saturday:</strong> 09:00 AM - 01:00 PM (SAST)</p>
+                <p><strong>Sunday & Public Holidays:</strong> Closed</p>
+            </article>
+    
+            <article class="follow">
+                <h3>Follow Us</h3>
+                <p><a href="https://facebook.com/TuteMeSA" target="_blank">Facebook</a></p>
+                <p><a href="https://twitter.com/TuteMeSA" target="_blank">Twitter</a></p>
+                <p><a href="https://instagram.com/TuteMeSA" target="_blank">Instagram</a></p>
+                <p><a href="https://linkedin.com/company/tuteme" target="_blank">LinkedIn</a></p>
+            </article>
+        </section>
+
+    {% elif user.role == 'tutor' %}
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p>You are logged in as a <strong>Tutor</strong>.</p>
+        <a href="{{ url_for('tutor_dashboard') }}" class="btn">Go to Dashboard</a>
+
+    {% elif user.role == 'admin' %}
+        <h2>Welcome, Admin {{ user.username }}!</h2>
+        <p>You have administrative privileges.</p>
+        <a href="{{ url_for('admin_dashboard') }}" class="btn">Go to Admin Panel</a>
+
+    {% else %}
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p>Your role is not recognized.</p>
+        
+    {% endif %}
+
+{% else %}
+    <section class="hero" id="hero">
+        <article class="hero-title">
+            <h1>Tute Me!</h1>
+
+            <p>
+                Connect with expert tutors, schedule sessions effortlessly, and achieve your academic goals with confidence.
+
+                <br>
+
+                Where knowledge meets collaboration—start your journey today!
+            </p>
+        </article>
+        
+        <article class="cards">
+            <div class="card">
+                <h3>Find a Tutor</h3>
+                <p>Connect with qualified peer tutors who can help you achieve your academic goals.</p>
+                <a href="{{ url_for('login') }}" class="btn">
+                    <span>Find a Tutor</span>
+                    <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Become a Tutor</h3>
+                <p>Share your knowledge, help fellow students, and earn while building your resume.</p>
+                <a href="{{ url_for('login') }}" class="btn">
+                    <span>Become a Tutor</span>
+                    <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+        </article>
+    </section>
+
+    <section class="about" id="about">
+        <article class="description">
+            <h2>Get to Know Tute Me: Your Gateway to Smarter Learning!</h2>
+
+            <p>
+                Peer Tutoring is a platform that connects students with peer tutors for personalized learning experiences.
+                Our mission is to make education more accessible and personalized through peer-to-peer learning.
+            </p>
+
+            <p>
+                Empowering students through personalized peer-to-peer learning.
+                Schedule sessions, track progress, and connect with tutors who make learning simpler, smarter, and more effective.
+            </p>
+
+            <a href="{{ url_for('login') }}" class="btn">
+                <span>Start Your Journey With Us</span>
+                <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </article>
+
+        <img src="../static/images/student.png" alt="Tute Me">
+    </section>
+
+    <section class="cards" id="contact">
+        <article class="card">
+            <h3>Who’s Who?</h3>
+
+            <p>
+                Students find tutors and book sessions, tutors manage schedules and teach, while admins keep everything running smoothly.
+            </p>
+        </article>
+        <article class="card">
+            <h3>Seamless Scheduling</h3>
+
+            <p>
+                Students book sessions based on tutor availability, tutors accept or decline, and automated reminders prevent missed sessions.
+            </p>
+        </article>
+        <article class="card">
+            <h3>Top-Tier Tutors</h3>
+
+            <p>
+                Tutors are verified for expertise, students leave reviews for transparency, and admins ensure high-quality learning.
+            </p>
+        </article>
+    </section>
+
+    <section class="contact">
+        <article class="tuteme">
+            <h3>Company Information</h3>
+            <p><strong>TuteMe</strong></p>
+            <p>123 Learning Avenue, Durban, 4000, South Africa</p>
+            <p>Phone: +27 21 123 4567</p>
+            <p>Email: <a href="mailto:support@tuteme.co.za">support@tuteme.co.za</a></p>
+            <p>Website: <a href="https://www.tuteme.co.za" target="_blank">www.tuteme.co.za</a></p>
+        </article>
+
+        <article class="support">
+            <h3>Support Hours</h3>
+            <p><strong>Monday - Friday:</strong> 08:00 AM - 06:00 PM (SAST)</p>
+            <p><strong>Saturday:</strong> 09:00 AM - 01:00 PM (SAST)</p>
+            <p><strong>Sunday & Public Holidays:</strong> Closed</p>
+        </article>
+
+        <article class="follow">
+            <h3>Follow Us</h3>
+            <p><a href="https://facebook.com/TuteMeSA" target="_blank">Facebook</a></p>
+            <p><a href="https://twitter.com/TuteMeSA" target="_blank">Twitter</a></p>
+            <p><a href="https://instagram.com/TuteMeSA" target="_blank">Instagram</a></p>
+            <p><a href="https://linkedin.com/company/tuteme" target="_blank">LinkedIn</a></p>
+        </article>
+    </section>
+
+    <aside class="cta">
+        <h2>Join Us Today!</h2>
+        <p>
+            Whether you're a student looking for academic support or a tutor eager to share your knowledge, the <strong>Peer Tutoring Platform</strong> is here to help you achieve your goals. Start your journey today and experience the benefits of peer-to-peer learning!
+        </p>
+        {% if session.get('user_id') %}
+
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn">
+                <span>Join Us</span>
+                <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        {%  endif %}
+    </aside>
+{%  endif %}
+
+{% endblock %}

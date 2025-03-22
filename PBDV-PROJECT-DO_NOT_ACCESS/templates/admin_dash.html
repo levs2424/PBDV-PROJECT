@@ -4,10 +4,39 @@
 {% block title %}Admin Dashboard{% endblock %}
 
 {% block content %}
-    <h1>Admin Dashboard</h1>
-    <h2>Tutors</h2>
-    <a href="{{ url_for('add_tutor') }}">Add New Tutor</a>
-    <table>
+<section class="admin-dashboard" id="admin-hero">
+    <article class="hero-title">
+        <h1>Hi, I am Tute Me! I believe you are the admin right?</h1>
+
+        <p>
+            So in your Admin Dashboard! You have full control over user management, tutoring sessions, and platform operations.
+            
+        </p>
+    </article>
+    
+    <article class="cards">
+        <div class="card">
+            <h3>Manage Your Users</h3>
+            <p>Oversee student and tutor accounts, update user details, and ensure a seamless tutoring experience.</p>
+        </div>
+    </article>
+</section>
+
+<section id="users">
+    <article class="section-header">
+        <div class="sticker">
+            <a href="{{ url_for('index') }}" class="logo"><img src="../static/images/tute.png" alt="Tute Me" width="30"></a>
+            <h3>Please manage your users here</h3>
+        </div>
+        <a href="{{ url_for('add_tutor') }}" class="btn">
+            <span>Add New Tutor</span>
+            <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a>
+    </article>
+
+    <table class="users-table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -20,13 +49,14 @@
                 <tr>
                     <td>{{ tutor.name }} {{ tutor.surname }}</td>
                     <td>{{ tutor.username }}</td>
-                    <td>
-                        <a href="{{ url_for('view_tutor', tutor_id=tutor.user_id) }}">View</a>
-                        <a href="{{ url_for('edit_tutor', tutor_id=tutor.user_id) }}">Edit</a>
-                        <a href="{{ url_for('remove_tutor', tutor_id=tutor.user_id) }}">Remove</a>
+                    <td class="actions">
+                        <a href="{{ url_for('view_tutor', tutor_id=tutor.user_id) }}" class="btn small">View</a>
+                        <a href="{{ url_for('edit_tutor', tutor_id=tutor.user_id) }}" class="btn small edit">Edit</a>
+                        <a href="{{ url_for('remove_tutor', tutor_id=tutor.user_id) }}" class="btn small delete">Remove</a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+</section>
 {% endblock %}

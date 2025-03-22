@@ -4,15 +4,25 @@
 {% block title %}Remove Tutor{% endblock %}
 
 {% block content %}
-    <h1>Remove Tutor</h1>
-    <p>Are you sure you want to remove the following tutor?</p>
-    <p><strong>Name:</strong> {{ tutor.name }} {{ tutor.surname }}</p>
-    <p><strong>Username:</strong> {{ tutor.username }}</p>
-    <p><strong>Role:</strong> {{ tutor.role }}</p>
+<section class="remove-tutor">
+    <h1>Hey... Wait! Are you sure you want to remove {{ tutor.name }} {{ tutor.surname }}</h1>
 
-    <form method="POST" action="{{ url_for('remove_tutor', tutor_id=tutor.user_id) }}">
-        <input type="submit" value="Yes, Remove Tutor" style="background-color: red; color: white;">
-    </form>
-    <br>
-    <a href="{{ url_for('admin_dashboard') }}">No, Go Back</a>
+    <div class="cards">
+        <div class="card">
+            <h3>{{ tutor.name }} {{ tutor.surname }}</h3>
+            <p>This is your {{ tutor.role }} so please be sure before removing. There is no going back after removing your {{ tutor.role }}</p>
+
+            <form method="POST" action="{{ url_for('remove_tutor', tutor_id=tutor.user_id) }}">
+                <!-- <input type="submit" value="Yes, Remove Tutor" style="background-color: red; color: white;"> -->
+                
+                <button type="submit" class="btn">
+                    <span>Yes, Remove Tutor</span>
+                    <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock %}
